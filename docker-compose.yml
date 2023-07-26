@@ -30,12 +30,12 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
 
-#  aqa-shop:
-#    depends_on:
-#      - 'postgresdb'
-#      - 'mysqldb'
-#      - 'node-app'
-#    build: .
-#    image: aqa-shop.jar
-#    ports:
-#      - '8080:8080'
+  aqa-shop:
+    depends_on:
+      - 'postgresdb'
+      - 'mysqldb'
+      - 'node-app'
+    build: .
+    image: aqa-shop.jar
+    ports:
+      - '8080:8080'
