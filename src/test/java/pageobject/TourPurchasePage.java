@@ -28,4 +28,9 @@ public class TourPurchasePage {
         creditButton.click();
         return new CreditPage();
     }
+
+    public String tourPrice() {
+        String price = tourConditions.$(byText("Всего")).getText();
+        return price;
+    }
 }
