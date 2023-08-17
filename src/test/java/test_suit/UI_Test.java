@@ -107,9 +107,9 @@ public class UI_Test {
     void shouldGetErrorIfBuyTourWith61MonthExpiredCardOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(61);
-        paymentPage.successfulSendingForm(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -131,13 +131,13 @@ public class UI_Test {
     }
 
     @Test
-    @DisplayName("Должен показать ошибку при оформлении покупки по активной карте со сроком истечения более 5 лет")
+    @DisplayName("Должен показать ошибку при оформлении покупки по карте, истекшей в прошлом календарном месяце")
     void shouldGetErrorIfBuyTourWithExpiredCardOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(-1);
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(), approvedPayment.getYear(),
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(), approvedPayment.getYear(),
                 approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -159,13 +159,13 @@ public class UI_Test {
     }
 
     @Test
-    @DisplayName("Должен показать ошибку при оформлении покупки по активной карте со сроком истечения более 5 лет")
+    @DisplayName("Должен показать ошибку при оформлении кредита по активной карте со сроком истечения более 5 лет")
     void shouldGetErrorIfBuyTourWith61MonthExpiredCardOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(61);
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(), approvedPayment.getYear(),
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(), approvedPayment.getYear(),
                 approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -187,13 +187,13 @@ public class UI_Test {
     }
 
     @Test
-    @DisplayName("Должен показать ошибку при оформлении кредита по активной карте со сроком истечения более 5 лет")
+    @DisplayName("Должен показать ошибку при оформлении кредита по карте, истекшей в прошлом календарном месяце")
     void shouldGetErrorIfBuyTourWithExpiredCardOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(-1);
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(), approvedPayment.getYear(),
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(), approvedPayment.getYear(),
                 approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -210,9 +210,9 @@ public class UI_Test {
     void shouldGetErrorIfBuyTourWithZeroMonthValueOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(24);
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), "00",
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), "00",
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -229,9 +229,9 @@ public class UI_Test {
     void shouldGetErrorIfBuyTourWith13MonthValueOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(24);
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), "13",
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), "13",
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -248,9 +248,9 @@ public class UI_Test {
     void shouldGetErrorIfBuyTourWithZeroMonthValueOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(24);
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), "00",
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), "00",
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -267,9 +267,9 @@ public class UI_Test {
     void shouldGetErrorIfBuyTourWith13MonthValueOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(24);
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), "13",
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), "13",
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -291,9 +291,9 @@ public class UI_Test {
     void shouldRequireCardNumberOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        paymentPage.fillPaymentInfo("", approvedPayment.getMonth(),
+        paymentPage.fillAndSendPaymentInfo("", approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -301,9 +301,9 @@ public class UI_Test {
     void shouldRequireMonthOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), "",
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), "",
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -311,9 +311,9 @@ public class UI_Test {
     void shouldRequireYearOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 "", approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -321,9 +321,9 @@ public class UI_Test {
     void shouldRequireCardHolderOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), "", approvedPayment.getCvv());
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -331,9 +331,9 @@ public class UI_Test {
     void shouldRequireCvvOnPaymentPageTest() {
         var paymentPage = tourPurchasePage.payForTour();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        paymentPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), "");
-        paymentPage.sendInvalidForm();
+        paymentPage.inputInvalidError();
     }
 
     @Test
@@ -341,9 +341,9 @@ public class UI_Test {
     void shouldRequireCardNumberOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        creditPage.fillPaymentInfo("", approvedPayment.getMonth(),
+        creditPage.fillAndSendPaymentInfo("", approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -351,9 +351,9 @@ public class UI_Test {
     void shouldRequireMonthOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), "",
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), "",
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -361,9 +361,9 @@ public class UI_Test {
     void shouldRequireYearOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 "", approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -371,9 +371,9 @@ public class UI_Test {
     void shouldRequireCardHolderOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), "", approvedPayment.getCvv());
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
@@ -381,9 +381,9 @@ public class UI_Test {
     void shouldRequireCvvOnCreditPageTest() {
         var creditPage = tourPurchasePage.buyWithCredit();
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
-        creditPage.fillPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
+        creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), "");
-        creditPage.sendInvalidForm();
+        creditPage.inputInvalidError();
     }
 
     @Test
