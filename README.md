@@ -29,7 +29,7 @@
 
 По завершении тестового прогона можно открыть отчеты Allure командой
 
-`gradlew allureServe`.
+`gradlew allureServe`
 
 Также можно сгенерировать файлы отчетов командой
 
@@ -42,9 +42,9 @@
 
 ### **Ссылки на документацию и отчеты:**
 
-[Отчет о проведенном тестировании]()
+[Отчет о проведенном тестировании](https://github.com/sanyaminkin/QA-Diploma-QA-49/blob/main/test-documentation/Report.md)
 
-[Отчет о проведенной автоматизации]()
+[Отчет о проведенной автоматизации](https://github.com/sanyaminkin/QA-Diploma-QA-49/blob/main/test-documentation/Summary.md)
 
 [Список выявленных дефектов](https://github.com/sanyaminkin/QA-Diploma-QA-49/issues) 
 
