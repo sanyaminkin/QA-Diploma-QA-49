@@ -1,3 +1,4 @@
+
 # Дипломная работа профессии "Тестировщик ПО"
 
 ### Данная работа представляет собой проект по автоматизированному тестированию web-приложения для покупки туристического тура.
@@ -36,11 +37,16 @@
 `gradlew allureReport` (файлы будут помещены в каталог ./build/reports/allure-report)
 
 
+В каталоге ./build/reports/tests/test находятся отчеты, сгенерированные Gradle.
+
+
 Свертывание контейнеров Docker осуществляется командой
 
 `docker-compose down`
 
 ### **Ссылки на документацию и отчеты:**
+
+[План автоматизации тестирования](https://github.com/sanyaminkin/QA-Diploma-QA-49/blob/main/test-documentation/Plan.md)
 
 [Отчет о проведенном тестировании](https://github.com/sanyaminkin/QA-Diploma-QA-49/blob/main/test-documentation/Report.md)
 
