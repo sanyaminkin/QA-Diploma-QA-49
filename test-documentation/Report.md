@@ -9,7 +9,7 @@
 
 Из 72 тест-кейсов 56 пройдены успешно (77% от общего количества), 16 завершились с ошибкой.
 
-[postgres](https://prnt.sc/jEeJoDCnqvg3)
+![postgres](https://dropmefiles.com/LHoQf)
 
 Баг-репорты с описанием выявленных дефектов оформлены в разделе [Issues](https://github.com/sanyaminkin/QA-Diploma-QA-49/issues)
 
