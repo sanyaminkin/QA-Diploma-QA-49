@@ -44,7 +44,7 @@ public class DbTests {
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
         paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.anyNotification();
+        paymentPage.waitAnyNotification();
         assertEquals("null", DatabaseTool.getCreditId());
     }
 
@@ -55,7 +55,7 @@ public class DbTests {
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
         creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.anyNotification();
+        creditPage.waitAnyNotification();
         assertEquals("null", DatabaseTool.getCreditId());
     }
 
@@ -66,7 +66,7 @@ public class DbTests {
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
         paymentPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        paymentPage.anyNotification();
+        paymentPage.waitAnyNotification();
         assertEquals("APPROVED", DatabaseTool.getPaymentStatus());
     }
 
@@ -77,7 +77,7 @@ public class DbTests {
         var declinedPayment = DataHelper.declinedPayment(DataHelper.randomPlusMonth());
         paymentPage.fillAndSendPaymentInfo(declinedPayment.getCardNumber(), declinedPayment.getMonth(),
                 declinedPayment.getYear(), declinedPayment.getCardHolder(), declinedPayment.getCvv());
-        paymentPage.anyNotification();
+        paymentPage.waitAnyNotification();
         assertEquals("DECLINED", DatabaseTool.getPaymentStatus());
     }
 
@@ -88,7 +88,7 @@ public class DbTests {
         var approvedPayment = DataHelper.approvedPayment(DataHelper.randomPlusMonth());
         creditPage.fillAndSendPaymentInfo(approvedPayment.getCardNumber(), approvedPayment.getMonth(),
                 approvedPayment.getYear(), approvedPayment.getCardHolder(), approvedPayment.getCvv());
-        creditPage.anyNotification();
+        creditPage.waitAnyNotification();
         assertEquals("APPROVED", DatabaseTool.getCreditStatus());
     }
 
@@ -99,7 +99,7 @@ public class DbTests {
         var declinedPayment = DataHelper.declinedPayment(DataHelper.randomPlusMonth());
         creditPage.fillAndSendPaymentInfo(declinedPayment.getCardNumber(), declinedPayment.getMonth(),
                 declinedPayment.getYear(), declinedPayment.getCardHolder(), declinedPayment.getCvv());
-        creditPage.anyNotification();
+        creditPage.waitAnyNotification();
         assertEquals("DECLINED", DatabaseTool.getCreditStatus());
     }
 }

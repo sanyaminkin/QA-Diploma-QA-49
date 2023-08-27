@@ -25,7 +25,7 @@ public class PaymentPage {
     private SelenideElement successNotification = $(".notification_status_ok");
     private SelenideElement errorNotification = $(".notification_status_error");
     private SelenideElement inputInvalid = $(".input__sub");
-    private SelenideElement anyNotification = $(".notification");
+    private SelenideElement waitAnyNotification = $(".notification");
 
     public PaymentPage() {
         header.shouldBe(visible).shouldHave(exactText("Оплата по карте"));
@@ -76,8 +76,8 @@ public class PaymentPage {
         inputInvalid.shouldBe(visible);
     }
 
-    public void anyNotification() {
-        anyNotification.shouldBe(visible, Duration.ofSeconds(15));
+    public void waitAnyNotification() {
+        waitAnyNotification.shouldBe(visible, Duration.ofSeconds(15));
     }
 
 }

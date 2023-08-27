@@ -25,7 +25,7 @@ public class CreditPage {
     private SelenideElement successNotification = $(".notification_status_ok");
     private SelenideElement errorNotification = $(".notification_status_error");
     private SelenideElement inputInvalid = $(".input__sub");
-    private SelenideElement anyNotification = $(".notification");
+    private SelenideElement waitAnyNotification = $(".notification");
 
     public CreditPage() {
         header.shouldBe(visible).shouldHave(exactText("Кредит по данным карты"));
@@ -76,7 +76,7 @@ public class CreditPage {
         inputInvalid.shouldBe(visible);
     }
 
-    public void anyNotification() {
-        anyNotification.shouldBe(visible, Duration.ofSeconds(15));
+    public void waitAnyNotification() {
+        waitAnyNotification.shouldBe(visible, Duration.ofSeconds(15));
     }
 }
