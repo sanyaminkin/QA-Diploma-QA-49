@@ -27,7 +27,9 @@ public class DatabaseTool {
     @SneakyThrows
     public static String getValue(String request) {
         var runner = new QueryRunner();
-        var value = new String();
-        return value;
+        var conn = DriverManager.getConnection(System.getProperty("dbUrl"),
+                System.getProperty("dbUser"), System.getProperty("dbPassword"));
+        var result = runner.query(conn, request, new ScalarHandler<String>());
+        return result;
     }
 }
