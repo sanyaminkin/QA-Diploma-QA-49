@@ -7,9 +7,9 @@
 В процессе тестирования было воспроизведено 72 тест-кейса, включающих позитивные и негативные сценарии
 использования тестируемого приложения.
 
-Из 72 тест-кейсов 56 пройдены успешно (77% от общего количества), 16 завершились с ошибкой.
+Из 72 тест-кейсов 60 пройдены успешно (83% от общего количества), 12 завершились с ошибкой.
 
-![postgres](https://github.com/sanyaminkin/QA-Diploma-QA-49/blob/main/test-documentation/Allure%20report%202.png)
+![postgres](https://github.com/sanyaminkin/QA-Diploma-QA-49/blob/main/test-documentation/Allure%20report%20%203.png)
 
 Баг-репорты с описанием выявленных дефектов оформлены в разделе [Issues](https://github.com/sanyaminkin/QA-Diploma-QA-49/issues)
 
